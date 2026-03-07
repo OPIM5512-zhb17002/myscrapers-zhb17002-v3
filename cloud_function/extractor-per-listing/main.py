@@ -164,20 +164,20 @@ def parse_listing(text: str) -> dict:
     drive=None
     try:
       drive=re.search(r"(\b(drive)\b\s*[:]?\s*(4wd|[afr]wd))",text,re.I)
-    except ValueError: drive =None
+    except ValueError: drive=None
     try:
       drive=drive.group(1)
       drive=drive.lower()
-    except ValueError: drive =None
+    except ValueError: drive=None
     d['drive']=drive
 
     #transmission
     transmission=None
     try:
       transmission=re.search(r"(\b(transmission)\b\s*?[:]?\s*\b([A-Z]+)\b)",text,re.I)
-    except ValueError: trnasmission=None
+    except ValueError: transmission=None
     try:
-      transmission=trnasmission.group(1)
+      transmission=transmission.group(1)
       transmission=transmission.lower()
     except ValueError:drive=None
     d['transmision']=transmission
