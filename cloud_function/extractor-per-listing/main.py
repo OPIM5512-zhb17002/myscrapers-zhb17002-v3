@@ -180,7 +180,7 @@ def parse_listing(text: str) -> dict:
       transmission=transmission.group(3)
       transmission=transmission.lower()
     except ValueError:drive=None
-    d['transmision']=transmission
+    d['transmission']=transmission
 
     #VIN
     VIN=None
