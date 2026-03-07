@@ -155,6 +155,7 @@ def parse_listing(text: str) -> dict:
       fuel=re.search(r"\b(fuel)\b\s*[:]?\s*([A-Z]+)",text, re.I)
     except ValueError: fuel = None
     try:
+      fuel=fuel.group(1)
       fuel=fuel.lower()
     except ValueError: fuel = None
     d["fuel"]=fuel
@@ -165,6 +166,7 @@ def parse_listing(text: str) -> dict:
       drive=re.search(r"(\b(drive)\b\s*[:]?\s*(4wd|[afr]wd))",text,re.I)
     except ValueError: drive =None
     try:
+      drive=drive.group(1)
       drive=drive.lower()
     except ValueError: drive =None
     d['drive']=drive
@@ -175,6 +177,7 @@ def parse_listing(text: str) -> dict:
       transmission=re.search(r"(\b(transmission)\b\s*?[:]?\s*\b([A-Z]+)\b)",text,re.I)
     except ValueError: trnasmission=None
     try:
+      transmission=trnasmission.group(1)
       transmission=transmission.lower()
     except ValueError:drive=None
     d['transmision']=transmission
@@ -185,6 +188,7 @@ def parse_listing(text: str) -> dict:
       VIN=re.search(r"(\b(vin)\b\s*?[:]?\s*([\dA-HJ-NPR-Z]{17})\b)",text,re.I)
     except ValueError:VIN=None
     try:
+      VIN=VIN.group(1)
       VIN=VIN.upper()
     except ValueError:VIN=None
     d['VIN']=VIN
@@ -195,6 +199,7 @@ def parse_listing(text: str) -> dict:
       title_status=re.search(r"(title status)\s*?[:]?\s*\b([A-Z]+)\b",text,re.I)
     except ValueError:title_status=None
     try:
+      title_status=title_status.group(1)
       title_status=title_status.lower()
     except ValueError:title_status=None
     d['title_status']=title_status
