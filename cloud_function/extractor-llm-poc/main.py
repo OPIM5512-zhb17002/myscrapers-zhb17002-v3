@@ -166,11 +166,15 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "properties": {
             "price": {"type": "integer", "nullable": True},
             "year": {"type": "integer", "nullable": True},
+            "doors": {"type": "integer", "nullable": True},
+            "cylinder_count": {"type": "integer", "nullable": True},
             "make": {"type": "string", "nullable": True},
             "model": {"type": "string", "nullable": True},
+            "transmission": {"type": "string", "nullable": True},
+            "condition": {"type": "string", "nullable": True},
             "mileage": {"type": "integer", "nullable": True},
         },
-        "required": ["price", "year", "make", "model", "mileage"]
+        "required": ["price", "year", "make", "model","transmission","mileage"]
     }
 
     # System instruction (will be prepended to the prompt)
@@ -179,6 +183,9 @@ def _vertex_extract_fields(raw_text: str) -> dict:
         "Return a strict JSON object that conforms to the provided schema. "
         "If a value is not present, use null. "
         "Rules: integers for price/year/mileage; price in USD; mileage in miles; "
+        "the transmission can be manual or automatic, or if not listed, write null."
+        "cylinder counts and number of doors are integer, if not listed, write null"
+        "the condition of a car will be string, if not listed, write null."
         "do not infer values not explicitly present; do not add extra keys."
     )
 
